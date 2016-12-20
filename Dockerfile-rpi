@@ -15,6 +15,13 @@ FROM hypriot/rpi-node:latest
 
 MAINTAINER Björn Kjeholt <dev@kjeholt.se>
 
+ARG GIT_BRANCH_NAME=unknown
+ARG BUILD_NO=-
+
+ENV APP_REV  ${GIT_BRANCH_NAME-BUILD_NO}
+
+RUN echo "Application revision: ${APP_REV} "
+
 RUN apt-get update && \
     apt-get install -y vim \
                        ow-shell \
