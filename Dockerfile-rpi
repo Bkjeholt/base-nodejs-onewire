@@ -16,9 +16,9 @@ FROM hypriot/rpi-node:latest
 MAINTAINER Björn Kjeholt <dev@kjeholt.se>
 
 ARG GIT_BRANCH_NAME=unknown
-ARG BUILD_NO=-
+ARG APP_REV
 
-ENV APP_REV  ${GIT_BRANCH_NAME-BUILD_NO}
+ENV APP_REV  ${APP_REV:-GIT_BRANCH_NAME}
 
 RUN echo "Application revision: ${APP_REV} "
 
