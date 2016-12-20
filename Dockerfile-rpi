@@ -26,10 +26,9 @@ RUN mkdir -p /usr/src/app && \
     mkdir -p /usr/src/app/script && \
     mkdir -p /mnt/1wire
 
-ARG GIT_BRANCH_NAME=unknown
-ARG APP_REV
+ARG APPLICATION_REVISION
 
-ENV BASE_APP_REV  ${APP_REV:-${GIT_BRANCH_NAME}}
+ENV BASE_APPL_REV  ${APPLICATION_REVISION:-UnknownRevision}
 
 RUN echo "Application revision: ${APP_REV} "
     
