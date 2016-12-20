@@ -44,8 +44,7 @@ ONBUILD RUN npm install
 ONBUILD COPY js /usr/src/app/js
 # ONBUILD COPY Scripts /usr/src/app/script
 
-ONBUILD RUN chmod -f 755 /usr/src/app/script/* && \
-            chmod -f 755 /usr/src/app/*
+# ONBUILD RUN chmod -f 755 /usr/src/app/script/* 
 
 COPY Configs/owfs.conf /etc/owfs.conf
 
