@@ -18,7 +18,7 @@ MAINTAINER Björn Kjeholt <dev@kjeholt.se>
 ARG GIT_BRANCH_NAME=unknown
 ARG APP_REV
 
-ENV APP_REV  ${APP_REV:-GIT_BRANCH_NAME}
+ENV APP_REV  ${APP_REV:-${GIT_BRANCH_NAME}}
 
 RUN echo "Application revision: ${APP_REV} "
 
