@@ -26,11 +26,13 @@ RUN mkdir -p /usr/src/app && \
     mkdir -p /usr/src/app/script && \
     mkdir -p /mnt/1wire
 
-ARG APPLICATION_REVISION
+ARG DOCKER_IMAGE_NAME
+ARG DOCKER_IMAGE_TAG
 
-ENV BASE_APPL_REV  ${APPLICATION_REVISION:-UnknownRevision}
+ENV DOCKER_BASE_IMAGE_NAME ${DOCKER_IMAGE_NAME:-UnknownName}
+ENV DOCKER_BASE_IMAGE_TAG ${DOCKER_IMAGE_TAG:-UnknownRevision}
 
-RUN echo "Application revision: ${BASE_APPL_REV} "
+RUN echo "Application revision: ${DOCKER_BASE_IMAGE_TAG} "
     
 
 WORKDIR /usr/src/app
