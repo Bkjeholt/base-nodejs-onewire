@@ -15,13 +15,6 @@ FROM hypriot/rpi-node:latest
 
 MAINTAINER Björn Kjeholt <dev@kjeholt.se>
 
-ARG GIT_BRANCH_NAME=unknown
-ARG APP_REV
-
-ENV APP_REV  ${APP_REV:-${GIT_BRANCH_NAME}}
-
-RUN echo "Application revision: ${APP_REV} "
-
 RUN apt-get update && \
     apt-get install -y vim \
                        ow-shell \
@@ -32,7 +25,15 @@ RUN mkdir -p /usr/src/app && \
     mkdir -p /usr/src/app/js && \
     mkdir -p /usr/src/app/script && \
     mkdir -p /mnt/1wire
+
+ARG GIT_BRANCH_NAME=unknown
+ARG APP_REV
+
+ENV BASE_APP_REV  ${APP_REV:-${GIT_BRANCH_NAME}}
+
+RUN echo "Application revision: ${APP_REV} "
     
+
 WORKDIR /usr/src/app
 
 # Install app dependencies
@@ -51,6 +52,7 @@ COPY Configs/owfs.conf /etc/owfs.conf
 
 VOLUME /mnt/1wire
 EXPOSE 4304
+
 
 ONBUILD ENTRYPOINT /usr/bin/owserver -c /etc/owfs.conf --foreground
 
