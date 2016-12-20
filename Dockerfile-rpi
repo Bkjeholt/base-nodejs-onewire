@@ -30,7 +30,7 @@ ARG APPLICATION_REVISION
 
 ENV BASE_APPL_REV  ${APPLICATION_REVISION:-UnknownRevision}
 
-RUN echo "Application revision: ${APP_REV} "
+RUN echo "Application revision: ${BASE_APPL_REV} "
     
 
 WORKDIR /usr/src/app
