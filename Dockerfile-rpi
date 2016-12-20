@@ -54,6 +54,7 @@ VOLUME /mnt/1wire
 EXPOSE 4304
 
 
-ONBUILD ENTRYPOINT /usr/bin/owserver -c /etc/owfs.conf --foreground
+# ONBUILD ENTRYPOINT /usr/bin/owserver -c /etc/owfs.conf --foreground
 
-ONBUILD CMD ["npm","start"]
+# ONBUILD CMD ["npm","start"]
+ONBUILD CMD script/execute.sh
