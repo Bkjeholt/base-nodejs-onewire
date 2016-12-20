@@ -13,7 +13,8 @@ DOCKERFILE_PATH=Dockerfile-${ARCHITECTURE}
 # Start the build
 
 docker build -f ${DOCKERFILE_PATH} \
-             --build-arg GIT_BRANCH_NAME=${DOCKER_IMAGE_BASE_TAG}-${BUILD_NUMBER} \
+             --build-arg GIT_BRANCH_NAME=${DOCKER_IMAGE_BASE_TAG} \
+             --build-arg APP_REV=${DOCKER_IMAGE_BASE_TAG}-${BUILD_NUMBER} \
              -t ${DOCKER_IMAGE_FULL_NAME}:${DOCKER_IMAGE_TAG} .
 
 docker push ${DOCKER_IMAGE_FULL_NAME}:${DOCKER_IMAGE_TAG}
